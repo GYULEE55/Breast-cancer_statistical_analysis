@@ -1,6 +1,6 @@
 # 유방암 환자의 임상·병리학적 요인별 생존기간 차이 통계분석
 
-> 개인 프로젝트 | 이승규 | 2025.05
+> 팀 통키즈 | 이승규, 김명선, 모지윤, 방혜원 | 2025.07
 
 ---
 
@@ -35,6 +35,7 @@
 ## 🔬 분석 가설 및 결과
 
 ### 가설 1 — ER/PR 상태와 LNR에 따른 생존기간 차이
+
 > "ER/PR 모두 양성(++) 그룹과 모두 음성(--) 그룹 간에 전이 여부(LNR)에 따라 생존기간에 유의미한 차이가 있다."
 
 **검정 방법:**
@@ -43,9 +44,14 @@
 
 **결과:** ANOVA 검정 결과 6개 그룹의 생존기간 차이가 통계적으로 매우 유의함 **(p = 0.000\*\*\*)**
 
+<p align="center">
+  <img src="./results/hypothesis1_anova.jpg" width="700"/>
+</p>
+
 ---
 
 ### 가설 2 — N-stage, T-stage, LNR 조합에 따른 생존기간 차이
+
 > "N-stage와 T-stage에 따라, 전이율 조합 그룹의 영향을 보정한 상태에서 생존기간에 유의미한 차이가 있다."
 
 **검정 방법:**
@@ -54,9 +60,14 @@
 
 **결과:** 독립 T검정 결과 T/N/LNR에 따른 생존 개월 평균 차이가 통계적으로 유의미함 **(p < 0.001\*\*\*)**
 
+<p align="center">
+  <img src="./results/hypothesis2_ttest.jpg" width="700"/>
+</p>
+
 ---
 
 ### 가설 3 — 성별, 호르몬 수용체 상태, 방사선치료 여부에 따른 생존기간 차이
+
 > "성별, ER, PR, HER2 상태와 방사선치료 유무에 따라 생존기간에 유의미한 차이가 있다."
 
 **검정 방법:**
@@ -64,6 +75,25 @@
 - 치료 방식과 호르몬 수용체 상태 간 관련성 → **카이제곱 검정**
 
 **결과:** 카이제곱 검정 결과 방사선치료 여부와 호르몬 수용체 상태 간 분포 차이가 통계적으로 매우 유의함 **(χ²=2336.99, p < 0.0001\*\*\*)**
+
+<p align="center">
+  <img src="./results/hypothesis3_anova.jpg" width="700"/>
+</p>
+
+<p align="center">
+  <img src="./results/hypothesis3_table.jpg" width="700"/>
+</p>
+
+---
+
+## 🔄 데이터 플로우차트
+
+<p align="center">
+  <img src="./results/flowchart.jpg" width="500"/>
+</p>
+
+- 총 코호트: **1,048,576명** → 제외 기준 적용 후 **692,838명**
+- Y Radiation: 305,328명 / N Radiation: 383,533명
 
 ---
 
@@ -84,15 +114,17 @@
 ## 📁 프로젝트 구조
 
 ```
-📦 breast-cancer-survival-analysis
-├── data/
-│   ├── dataset1/          # 데이터셋 1 (ER/PR/LNR 분석)
-│   └── dataset2/          # 데이터셋 2 (HER2/RT 분석)
+📦 Breast-cancer_statistical_analysis
+├── results/
+│   ├── hypothesis1_anova.jpg     # 가설 1 시각화
+│   ├── hypothesis2_ttest.jpg     # 가설 2 시각화
+│   ├── hypothesis3_anova.jpg     # 가설 3 시각화
+│   ├── hypothesis3_table.jpg     # 가설 3 통계 테이블
+│   └── flowchart.jpg             # 데이터 플로우차트
 ├── notebooks/
-│   ├── hypothesis1.ipynb  # 가설 1 분석
-│   ├── hypothesis2.ipynb  # 가설 2 분석
-│   └── hypothesis3.ipynb  # 가설 3 분석
-├── results/               # 시각화 결과물
+│   ├── hypothesis1.ipynb
+│   ├── hypothesis2.ipynb
+│   └── hypothesis3.ipynb
 └── README.md
 ```
 
